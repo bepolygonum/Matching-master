@@ -1,0 +1,34 @@
+language: java
+jdk:
+  - openjdk8
+  - oraclejdk8
+  - oraclejdk9
+
+notifications:
+  email:
+    - github@graphhopper.com
+
+# enable container-based stack
+sudo: false
+
+install: true
+
+script:
+  - "mvn --version && mvn clean test verify -B"
+
+after_success:
+  # deploy snapshot artifacts to sonatype
+  - if [ "$TRAVIS_JDK_VERSION" == "openjdk8" ] && [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+        mvn deploy --settings mvn-settings.xml -DskipTests=true -B;
+    else
+        echo "Not deploying artifacts for $TRAVIS_BRANCH";
+    fi
+
+deploy:
+  provider: script
+  script: "mvn versions:set -DnewVersion=$TRAVIS_TAG -DgenerateBackupPoms=false && mvn --settings .travis.settings.xml -DskipTests=true -B clean deploy"
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
+    jdk: openjdk8

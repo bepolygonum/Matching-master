@@ -1,0 +1,17 @@
+target/
+track-data/
+*~
+test-input.gpx
+test.gpx
+graph-cache/
+nbactions.xml
+*pbf
+.idea/
+*iml
+.settings/
+.classpath
+.project
+matching-core/build.xml
+/map-data/**/*
+bin/
+/matching-core/nbproject/

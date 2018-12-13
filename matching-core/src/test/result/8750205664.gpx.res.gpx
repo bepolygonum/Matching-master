@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?><gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creator="Graphhopper MapMatching 0.11.0" version="1.1" xmlns:gh="https://graphhopper.com/public/schema/gpx/1.1">
+<metadata><copyright author="OpenStreetMap contributors"/><link href="http://graphhopper.com"><text>GraphHopper GPX</text></link><time>1970-01-01T00:00:00Z</time></metadata>
+<trk><name>GraphHopper MapMatching</name><trkseg>
+<trkpt lat="24.509657" lon="118.182999"><time>1970-01-01T00:00:00Z</time></trkpt>
+<trkpt lat="24.510003" lon="118.182955"><time>1970-01-01T00:00:00Z</time></trkpt>
+<trkpt lat="24.510301" lon="118.182635"><time>1970-01-01T00:00:00Z</time></trkpt>
+<trkpt lat="24.510275" lon="118.182569"><time>1970-01-01T00:00:00Z</time></trkpt>
+<trkpt lat="24.509683" lon="118.181479"><time>1970-01-01T00:00:00Z</time></trkpt>
+<trkpt lat="24.510275" lon="118.182569"><time>1970-01-01T00:00:00Z</time></trkpt>
+<trkpt lat="24.510301" lon="118.182635"><time>1970-01-01T00:00:00Z</time></trkpt>
+<trkpt lat="24.510275" lon="118.182569"><time>1970-01-01T00:00:00Z</time></trkpt>
+<trkpt lat="24.509683" lon="118.181479"><time>1970-01-01T00:00:00Z</time></trkpt></trkseg></trk></gpx>

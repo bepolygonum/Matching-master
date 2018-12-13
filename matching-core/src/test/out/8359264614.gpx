@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?><gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creator="Graphhopper MapMatching 0.11.0" version="1.1" xmlns:gh="https://graphhopper.com/public/schema/gpx/1.1"><metadata><copyright author="OpenStreetMap contributors"/><link href="http://graphhopper.com"><text>GraphHopper GPX</text></link><time>1970-01-01T00:00:00Z</time></metadata><trk><name>GraphHopper MapMatching</name><trkseg>
+<trkpt lat="24.4743483333333" lon="118.11505">
+<time>2014-07-01T00:02:03Z</time></trkpt>
+<trkpt lat="24.4743483333333" lon="118.115045">
+<time>2014-07-01T00:02:18Z</time></trkpt>
+<trkpt lat="24.4743516666667" lon="118.115053333333">
+<time>2014-07-01T00:03:08Z</time></trkpt>
+<trkpt lat="24.4744283333333" lon="118.114851666667">
+<time>2014-07-01T00:04:08Z</time></trkpt>
+<trkpt lat="24.4744316666667" lon="118.11481">
+<time>2014-07-01T00:05:08Z</time></trkpt>
+<trkpt lat="24.474435" lon="118.1148">
+<time>2014-07-01T00:06:08Z</time></trkpt>
+<trkpt lat="24.4744383333333" lon="118.114793333333">
+<time>2014-07-01T00:07:08Z</time></trkpt>
+<trkpt lat="24.4744466666667" lon="118.11478">
+<time>2014-07-01T00:08:08Z</time></trkpt>
+<trkpt lat="24.47445" lon="118.114775">
+<time>2014-07-01T00:09:13Z</time></trkpt>
+<trkpt lat="24.4744583333333" lon="118.114766666667">
+<time>2014-07-01T00:10:13Z</time></trkpt>
+<trkpt lat="24.4744733333333" lon="118.1148">
+<time>2014-07-01T00:11:13Z</time></trkpt>
+<trkpt lat="24.4744883333333" lon="118.114806666667">
+<time>2014-07-01T00:12:13Z</time></trkpt>
+<trkpt lat="24.474495" lon="118.114796666667">
+<time>2014-07-01T00:13:13Z</time></trkpt>
+<trkpt lat="24.4745033333333" lon="118.114785">
+<time>2014-07-01T00:14:13Z</time></trkpt>
+<trkpt lat="24.47451" lon="118.114775">
+<time>2014-07-01T00:15:18Z</time></trkpt>
+<trkpt lat="24.4746" lon="118.114716666667">
+<time>2014-07-01T00:15:58Z</time></trkpt>
+<trkpt lat="24.474555" lon="118.114515">
+<time>2014-07-01T00:16:18Z</time></trkpt>
+<trkpt lat="24.4739483333333" lon="118.112456666667">
+<time>2014-07-01T00:17:18Z</time></trkpt>
+<trkpt lat="24.47197" lon="118.109735">
+<time>2014-07-01T00:18:18Z</time></trkpt>
+<trkpt lat="24.469875" lon="118.102858333333">
+<time>2014-07-01T00:19:18Z</time></trkpt>
+<trkpt lat="24.4691183333333" lon="118.100316666667">
+<time>2014-07-01T00:20:18Z</time></trkpt>
+<trkpt lat="24.4687133333333" lon="118.099775">
+<time>2014-07-01T00:20:53Z</time></trkpt>
+<trkpt lat="24.4686683333333" lon="118.099793333333">
+<time>2014-07-01T00:21:23Z</time></trkpt>
+<trkpt lat="24.4686683333333" lon="118.099793333333">
+<time>2014-07-01T00:21:23Z</time></trkpt>
+<trkpt lat="24.4692833333333" lon="118.102318333333">
+<time>2014-07-01T00:22:23Z</time></trkpt>
+<trkpt lat="24.4696583333333" lon="118.103856666667">
+<time>2014-07-01T00:23:23Z</time></trkpt>
+<trkpt lat="24.4715016666667" lon="118.109683333333">
+<time>2014-07-01T00:24:23Z</time></trkpt>
+<trkpt lat="24.4746633333333" lon="118.113838333333">
+<time>2014-07-01T00:25:23Z</time></trkpt>
+<trkpt lat="24.4754283333333" lon="118.114518333333">
+<time>2014-07-01T00:26:23Z</time></trkpt>
+<trkpt lat="24.4792733333333" lon="118.119636666667">
+<time>2014-07-01T00:27:28Z</time></trkpt>
+<trkpt lat="24.4787333333333" lon="118.128583333333">
+<time>2014-07-01T00:28:28Z</time></trkpt>
+<trkpt lat="24.4803533333333" lon="118.137075">
+<time>2014-07-01T00:29:28Z</time></trkpt>
+<trkpt lat="24.4836383333333" lon="118.13915">
+<time>2014-07-01T00:30:28Z</time></trkpt>
+<trkpt lat="24.4883283333333" lon="118.14038">
+<time>2014-07-01T00:31:28Z</time></trkpt>
+<trkpt lat="24.4922066666667" lon="118.140886666667">
+<time>2014-07-01T00:32:28Z</time></trkpt>
+<trkpt lat="24.495565" lon="118.141965">
+<time>2014-07-01T00:33:33Z</time></trkpt>
+<trkpt lat="24.4981833333333" lon="118.145493333333">
+<time>2014-07-01T00:34:28Z</time></trkpt>
+<trkpt lat="24.4981833333333" lon="118.145493333333">
+<time>2014-07-01T00:34:33Z</time></trkpt>
+<trkpt lat="24.4982616666667" lon="118.145518333333">
+<time>2014-07-01T00:35:33Z</time></trkpt>
+<trkpt lat="24.5009983333333" lon="118.144168333333">
+<time>2014-07-01T00:36:33Z</time></trkpt>
+<trkpt lat="24.5002633333333" lon="118.149241666667">
+<time>2014-07-01T00:37:33Z</time></trkpt>
+<trkpt lat="24.49814" lon="118.14582">
+<time>2014-07-01T00:38:33Z</time></trkpt>
+<trkpt lat="24.4981683333333" lon="118.145656666667">
+<time>2014-07-01T00:38:48Z</time></trkpt>
+<trkpt lat="24.4990533333333" lon="118.148905">
+<time>2014-07-01T00:39:38Z</time></trkpt>
+<trkpt lat="24.5016166666667" lon="118.153278333333">
+<time>2014-07-01T00:40:38Z</time></trkpt>
+<trkpt lat="24.5034983333333" lon="118.160365">
+<time>2014-07-01T00:41:38Z</time></trkpt>
+<trkpt lat="24.5047716666667" lon="118.162983333333">
+<time>2014-07-01T00:42:13Z</time></trkpt>
+<trkpt lat="24.5057416666667" lon="118.16454">
+<time>2014-07-01T00:42:38Z</time></trkpt>
+<trkpt lat="24.5082066666667" lon="118.168283333333">
+<time>2014-07-01T00:43:38Z</time></trkpt>
+<trkpt lat="24.5062" lon="118.164308333333">
+<time>2014-07-01T00:44:38Z</time></trkpt>
+<trkpt lat="24.5062016666667" lon="118.164305">
+<time>2014-07-01T00:45:43Z</time></trkpt>
+<trkpt lat="24.50636" lon="118.16414">
+<time>2014-07-01T00:46:43Z</time></trkpt>
+<trkpt lat="24.5063566666667" lon="118.164136666667">
+<time>2014-07-01T00:47:43Z</time></trkpt>
+<trkpt lat="24.5063533333333" lon="118.164133333333">
+<time>2014-07-01T00:48:43Z</time></trkpt>
+<trkpt lat="24.5063516666667" lon="118.164131666667">
+<time>2014-07-01T00:49:43Z</time></trkpt>
+<trkpt lat="24.5063516666667" lon="118.164131666667">
+<time>2014-07-01T00:50:43Z</time></trkpt>
+<trkpt lat="24.5064716666667" lon="118.1640091915">
+<time>2014-07-01T00:51:48Z</time></trkpt>
+<trkpt lat="24.5062966666667" lon="118.163686666667">
+<time>2014-07-01T00:52:48Z</time></trkpt>
+<trkpt lat="24.5062733333333" lon="118.163686666667">
+<time>2014-07-01T00:53:48Z</time></trkpt>
+<trkpt lat="24.5062816666667" lon="118.1637">
+<time>2014-07-01T00:54:48Z</time></trkpt>
+<trkpt lat="24.5062816666667" lon="118.163695">
+<time>2014-07-01T00:55:48Z</time></trkpt>
+<trkpt lat="24.506285" lon="118.163691666667">
+<time>2014-07-01T00:56:48Z</time></trkpt>
+<trkpt lat="24.5063116666667" lon="118.163661666667">
+<time>2014-07-01T00:57:53Z</time></trkpt>
+<trkpt lat="24.5037783333333" lon="118.160223333333">
+<time>2014-07-01T00:58:53Z</time></trkpt>
+<trkpt lat="24.5045416666667" lon="118.154833333333">
+<time>2014-07-01T00:59:53Z</time></trkpt>
+</trkseg></trk></gpx>
