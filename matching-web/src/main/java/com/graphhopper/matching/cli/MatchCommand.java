@@ -20,6 +20,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -98,7 +99,7 @@ public class MatchCommand extends Command {
                     result.mkdirs();
                 }
                 String outFile =result.getAbsolutePath()+"/"+gpxFile.getName()+ ".res.gpx";
-                System.out.println("export results to:" + outFile);
+               // System.out.println("export results to:" + outFile);
 
                 InstructionList il;
                 if (args.getString("instructions").isEmpty()) {
@@ -125,7 +126,6 @@ public class MatchCommand extends Command {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        System.out.println("gps import took:" + importSW.getSeconds() + "s, match took: " + matchSW.getSeconds());
     }
 
 }

@@ -63,9 +63,12 @@ public class GPXFile {
         this.entries = new ArrayList<>(mr.getEdgeMatches().size());
         // TODO fetch time from GPX or from calculated route?
         long time = 0;
+        int count=0;
         for (int emIndex = 0; emIndex < mr.getEdgeMatches().size(); emIndex++) {
             EdgeMatch em = mr.getEdgeMatches().get(emIndex);
             PointList pl = em.getEdgeState().fetchWayGeometry(emIndex == 0 ? 3 : 2);
+//            count+=pl.size();
+//            System.out.println(count);
             if (pl.is3D()) {
                 includeElevation = true;
             }

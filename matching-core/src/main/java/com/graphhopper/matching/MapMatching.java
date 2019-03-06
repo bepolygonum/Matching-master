@@ -1,14 +1,14 @@
 /*
  *  Licensed to GraphHopper GmbH under one or more contributor
- *  license agreements. See the NOTICE file distributed with this work for 
+ *  license agreements. See the NOTICE file distributed with this work for
  *  additional information regarding copyright ownership.
- * 
- *  GraphHopper GmbH licenses this file to you under the Apache License, 
- *  Version 2.0 (the "License"); you may not use this file except in 
+ *
+ *  GraphHopper GmbH licenses this file to you under the Apache License,
+ *  Version 2.0 (the "License"); you may not use this file except in
  *  compliance with the License. You may obtain a copy of the License at
- * 
+ *
  *       http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,6 +33,7 @@ import com.graphhopper.storage.Graph;
 import com.graphhopper.storage.index.LocationIndexTree;
 import com.graphhopper.storage.index.QueryResult;
 import com.graphhopper.util.*;
+import javafx.scene.effect.Light;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -80,6 +81,7 @@ public class MapMatching {
     private final int maxVisitedNodes;
     private final int nodeCount;
     private final boolean ch;
+
     public MapMatching(GraphHopper graphHopper, AlgorithmOptions algoOptions) {
         // Convert heading penalty [s] into U-turn penalty [m]
         final double PENALTY_CONVERSION_VELOCITY = 5;  // [m/s]
@@ -117,7 +119,7 @@ public class MapMatching {
         }
         weighting = new FastestWeighting(graphHopper.getEncodingManager().getEncoder(vehicle), algoOptions.getHints());
         RoutingAlgorithmFactory routingAlgorithmFactory = graphHopper.getAlgorithmFactory(hints);
-        System.out.println( graphHopper.getGraphHopperStorage().getNodes());
+        System.out.println(graphHopper.getGraphHopperStorage().getNodes());
         if (routingAlgorithmFactory instanceof PrepareContractionHierarchies) {
             ch = true;
             // I want to use my own instance of FastestWeighting because it uses its own U-Turn-penalty,
@@ -161,104 +163,10 @@ public class MapMatching {
      *                of the graph specified in the constructor
      * @param gpxfile
      */
-//    public MatchResult doWork(List<GPXEntry> gpxList) {
-//        // filter the entries:
-//        //滤掉过于相近的两个点，距离大于两个标准差
-//        List<GPXEntry> filteredGPXEntries = filterGPXEntries(gpxList);
-//
-//        //System.out.println(routingGraph);
-//        // now find each of the entries in the graph:
-//        //
-//        // 最短路径算法的选择：A*算法
-//        //问题：候选集不同层次的候选点之间都要计算最短路径，使用最常用的Dijkstra最短路径算法效率极低！
-//        //解决方法：使用启发式最短路径算法：A-star算法。
-//        //http://www.360doc.com/content/16/1201/12/99071_610999046.shtml
-//        List<Collection<QueryResult>> queriesPerEntry = lookupGPXEntries(filteredGPXEntries, DefaultEdgeFilter.allEdges(weighting.getFlagEncoder()));
-//        // Add virtual nodes and edges to the graph so that candidates on edges can be represented
-//        // by virtual nodes.
-//        QueryGraph queryGraph = new QueryGraph(routingGraph).setUseEdgeExplorerCache(true);
-//        List<QueryResult> allQueryResults = new ArrayList<>();
-//        for (Collection<QueryResult> qrs : queriesPerEntry) {
-//            allQueryResults.addAll(qrs);//添加所有找到的结果
-//        }
-//
-//
-//        queryGraph.lookup(allQueryResults);//实际GPS点查询基础图
-//        // 阶段1
-//        	//如果需要，计算最近边缘的捕捉点和交换方向
-//        // 阶段2 - 现在很清楚哪些点削减了一条边
-//        	// 1.创建点列表
-//        	// 2.在虚拟节点及其邻居（虚拟或普通节点）之间创建虚拟边缘
-//
-//
-//        // 用虚拟节点替换一些QueryResult节点
-//
-//        // Different QueryResults can have the same tower node as their closest node.
-//        // Hence, we now dedupe the query results of each GPX entry by their closest node (#91).
-//        // This must be done after calling queryGraph.lookup() since this replaces some of the
-//        // QueryResult nodes with virtual nodes. Virtual nodes are not deduped since there is at
-//        // most one QueryResult per edge and virtual nodes are inserted into the middle of an edge.
-//        // Reducing the number of QueryResults improves performance since less shortest/fastest
-//        // routes need to be computed.
-//        queriesPerEntry = deduplicateQueryResultsByClosestNode(queriesPerEntry);//删除重复节点
-//     //logger.debug("================= Query results =================");
-////        int i = 1;
-////        for (Collection<QueryResult> entries : queriesPerEntry) {
-////           // logger.debug("Query results for GPX entry {}", i++);
-////            for (QueryResult qr : entries) {
-////                logger.debug("Node id: {}, virtual: {},snapped on: { }, pos: {},{}, "
-////                                + "query distance: {}", qr.getClosestNode(),
-////                        isVirtualNode(qr.getClosestNode()), qr.getSnappedPosition(),
-////                        qr.getSnappedPoint().getLat(), qr.getSnappedPoint().getLon(),
-////                        qr.getQueryDistance());
-////            }
-////        }
-//
-//        // Creates candidates from the QueryResults of all GPX entries (a candidate is basically a
-//        // QueryResult + direction).
-//        //从所有GPX条目的查询结果中创建候选项(一个候选项基本上是QueryResult + direction)。
-//        List<TimeStep<GPXExtension, GPXEntry, Path>> timeSteps =
-//                createTimeSteps(filteredGPXEntries, queriesPerEntry, queryGraph);
-//        //logger.debug("=============== Time steps ===============");
-////        i = 1;
-////        for (TimeStep<GPXExtension, GPXEntry, Path> ts : timeSteps) {
-////            logger.debug("Candidates for time step {}", i++);
-////            for (GPXExtension candidate : ts.candidates) {
-////                logger.debug(candidate.toString());
-////            }
-////        }
-//
-//        // Compute the most likely sequence of map matching candidates:
-//        List<SequenceState<GPXExtension, GPXEntry, Path>> seq = computeViterbiSequence(timeSteps, gpxList.size(), queryGraph);
-//
-////        logger.debug("=============== Viterbi results =============== ");
-////        i = 1;
-////        for (SequenceState<GPXExtension, GPXEntry, Path> ss : seq) {
-////            //System.out.println("ss.state"+ss.transitionDescriptor);
-////            i++;
-////        }
-////        System.out.println(i);
-//        final EdgeExplorer explorer = queryGraph.createEdgeExplorer(DefaultEdgeFilter.allEdges(weighting.getFlagEncoder()));
-//        final Map<String, EdgeIteratorState> virtualEdgesMap = createVirtualEdgesMap(queriesPerEntry, explorer);
-//        MatchResult matchResult = computeMatchResult(seq, virtualEdgesMap, gpxList, queryGraph);
-//
-////        logger.debug("=============== Matched real edges =============== ");
-////        i = 0;
-////        for (EdgeMatch em : matchResult.getEdgeMatches()) {
-////            if(!em.getGpxExtensions().isEmpty()){
-////                //System.out.println(em.getEdgeState().getEdge());
-////            }
-////            i++;
-////
-////
-////        }
-//        //System.out.println(i);
-//        return matchResult;
-//    }
-    public MatchResult doWork(List<GPXEntry> gpxList,File gpxfile) {
-        String name=gpxfile.getName();
+
+    public MatchResult doWork(List<GPXEntry> gpxList, File gpxfile) {
         // filter the entries:
-        List<GPXEntry> filteredGPXEntries =gpxList;// filterGPXEntries
+        List<GPXEntry> filteredGPXEntries = gpxList;//
         // now find each of the entries in the graph:
         List<Collection<QueryResult>> queriesPerEntry = lookupGPXEntries(filteredGPXEntries, DefaultEdgeFilter.allEdges(weighting.getFlagEncoder()));
 
@@ -308,30 +216,10 @@ public class MapMatching {
 
         // Compute the most likely sequence of map matching candidates:
         List<SequenceState<GPXExtension, GPXEntry, Path>> seq = computeViterbiSequence(timeSteps, gpxList.size(), queryGraph);
-        String data = "";
-        for (SequenceState<GPXExtension, GPXEntry, Path> ss : seq) {
-            data+=ss.state.getQueryResult().getClosestEdge().getEdge()+"\t";
-        }
-        try {
-            File parent=new File(gpxfile.getParent());
-            File result=new File(parent.getParent()+"/"+parent.getName()+"street");
-            if (!result.exists()) {
-                result.mkdirs();
-            }
-            String path=gpxfile.getParent();///root/street/"C:\\Users\\lenovo\\Desktop\\Matching-master\\matching-core\\src\\test\\street\\"
-            File file = new File(result.getAbsolutePath()+"/"+name+".txt");
-            BufferedWriter fileWritter = null;
-            fileWritter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
-            fileWritter.write(data);
-            fileWritter.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
 
         final EdgeExplorer explorer = queryGraph.createEdgeExplorer(DefaultEdgeFilter.allEdges(weighting.getFlagEncoder()));
         final Map<String, EdgeIteratorState> virtualEdgesMap = createVirtualEdgesMap(queriesPerEntry, explorer);
-        MatchResult matchResult = computeMatchResult(seq, virtualEdgesMap, gpxList, queryGraph);
+        MatchResult matchResult = computeMatchResult(seq, virtualEdgesMap, gpxList, queryGraph, gpxfile);
 
         return matchResult;
     }
@@ -390,7 +278,7 @@ public class MapMatching {
         List<SequenceState<GPXExtension, GPXEntry, Path>> seq = computeViterbiSequence(timeSteps, gpxList.size(), queryGraph);
         final EdgeExplorer explorer = queryGraph.createEdgeExplorer(DefaultEdgeFilter.allEdges(weighting.getFlagEncoder()));
         final Map<String, EdgeIteratorState> virtualEdgesMap = createVirtualEdgesMap(queriesPerEntry, explorer);
-        MatchResult matchResult = computeMatchResult(seq, virtualEdgesMap, gpxList, queryGraph);
+        MatchResult matchResult = computeMatchResult(seq, virtualEdgesMap, gpxList, queryGraph, null);
 
         return matchResult;
     }
@@ -550,7 +438,7 @@ public class MapMatching {
             computeEmissionProbabilities(timeStep, probabilities);//计算发射概率
 
             if (prevTimeStep == null) {
-                System.out.println("startWithInitialObservation");
+                //System.out.println("startWithInitialObservation");
                 viterbi.startWithInitialObservation(timeStep.observation, timeStep.candidates,
                         timeStep.emissionLogProbabilities);//若为空，计算初始概率
             } else {
@@ -693,11 +581,38 @@ public class MapMatching {
         return path.getDistance() + totalPenalty;
     }
 
+    private int[] matchPoint(PointList list,int index, GPXEntry gpx,int size) {
+        int[] minIndex = {-1, -1};
+        double[] minDist = {999999,999999};
+        double Dist[] = new double[list.size()];
+        for (int i = index; i < (index+size>list.size()?list.size():index+size); i++) {
+            Dist[i] = distanceCalc.calcDist(list.getLatitude(i),
+                    list.getLongitude(i), gpx.lat, gpx.lon);
+            if (i > index && minDist[0]+minDist[1] > Dist[i]+Dist[i-1]) {
+                minDist[0] = Dist[i-1];
+                minDist[1] = Dist[i];
+                minIndex[0] = i-1;
+                minIndex[1] = i;
+            }
+        }
+        return minIndex;
+    }
+
+    private double calcDist(int start, int end, PointList list) {
+        double distance = 0;
+        for (int i = start; i < end; i++) {
+            distance += distanceCalc.calcDist(list.getLatitude(i), list.getLongitude(i),
+                    list.getLatitude(i + 1), list.getLongitude(i + 1));
+        }
+        return distance;
+    }
+
+
     private MatchResult computeMatchResult(List<SequenceState<GPXExtension, GPXEntry, Path>> seq,
-                                           Map<String, EdgeIteratorState> virtualEdgesMap, List<GPXEntry> gpxList, QueryGraph queryGraph) {
+                                           Map<String, EdgeIteratorState> virtualEdgesMap,
+                                           List<GPXEntry> gpxList, QueryGraph queryGraph, File gpxfile) {
+        String name = gpxfile.getName();
         List<EdgeMatch> edgeMatches = new ArrayList<>();
-        double distance = 0.0;
-        long time = 0;
         EdgeIteratorState currentEdge = null;
         List<GPXExtension> gpxExtensions = new ArrayList<>();
         if (!seq.isEmpty()) {
@@ -706,8 +621,6 @@ public class MapMatching {
             for (int j = 1; j < seq.size(); j++) {
                 queryResult = seq.get(j).state;
                 Path path = seq.get(j).transitionDescriptor;
-                distance += path.getDistance();
-                time += path.getTime();
                 for (EdgeIteratorState edgeIteratorState : path.calcEdges()) {
                     EdgeIteratorState directedRealEdge = resolveToRealEdge(virtualEdgesMap,
                             edgeIteratorState);
@@ -735,17 +648,83 @@ public class MapMatching {
                 lastEdgeMatch.getGpxExtensions().addAll(gpxExtensions);
             }
         }
+        String data = "";
+        double beforeDist[] = new double[gpxList.size()];
+        double afterDist[] = new double[gpxList.size()];
+        int pointIndex[] = new int[gpxList.size()+1];
+        double velocity[] = new double[gpxList.size()];
+        PointList pl = new PointList();
+        for (int k=0;k<edgeMatches.size();k++) {
+            pl.add(edgeMatches.get(k).getEdgeState().fetchWayGeometry(k == 0 ? 3 : 2));
+        }
+        int size=3*pl.size()/gpxList.size();//参数可调整
 
+        for (int j = 0; j < seq.size(); j++) {
+            int index[] ;
+            if(j==0){
+                index = matchPoint(pl,0,gpxList.get(j),size);
+            }
+            else {
+                index= matchPoint(pl,pointIndex[j-1],gpxList.get(j),size);
+            }
+
+            if(index[0]==-1){
+                index[0]=pl.size()-2;
+                index[1]=pl.size()-1;
+            }
+            pointIndex[j]=index[1];
+
+            //System.out.println(pl.size()+" "+index[0]+" "+index[1]);
+            double dist0 = distanceCalc.calcDist(pl.getLatitude(index[0]),
+                    pl.getLongitude(index[0]), pl.getLatitude(index[1]),
+                    pl.getLongitude(index[1]));
+            double dist1 = distanceCalc.calcDist(pl.getLatitude(index[0]),
+                    pl.getLongitude(index[0]), gpxList.get(j).lat,
+                    gpxList.get(j).lon);
+            double dist2 = distanceCalc.calcDist(pl.getLatitude(index[1]),
+                    pl.getLongitude(index[1]), gpxList.get(j).lat,
+                    gpxList.get(j).lon);
+
+            afterDist[j] = dist2 * dist0 / (dist1 + dist2);
+            if(j>0) {
+                beforeDist[j] = dist1 * dist0 / (dist1 + dist2);
+                velocity[j - 1] = 3600 * (beforeDist[j] + afterDist[j - 1]
+                        +calcDist(pointIndex[j-1],pointIndex[j]-1,pl))
+                        / (gpxList.get(j).getTime() - gpxList.get(j - 1).getTime());
+                /*System.out.println(dist0 + " " + dist1 + " " + dist2 + " "
+                        +calcDist(pointIndex[j-1],pointIndex[j]-1,pl)+" "
+                        +beforeDist[j]+" "+afterDist[j - 1]+" "
+                        +(gpxList.get(j).getTime() - gpxList.get(j - 1).getTime()));
+                */
+                for(int c=pointIndex[j-1];c<pointIndex[j];c++){
+                    data += (c+1)+"\t"+velocity[j - 1] + "\r\n";
+                }
+            }
+        }
+        data+=pl.size();
+        try {
+            File parent = new File(gpxfile.getParent());
+            File result = new File(parent.getParent() + "/" + parent.getName() + "velocity");
+            if (!result.exists()) {
+                result.mkdirs();
+            }
+            File file = new File(result.getAbsolutePath() + "/" + name + ".txt");
+            BufferedWriter fileWritter = null;
+            fileWritter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
+            fileWritter.write(data);
+            fileWritter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         List<EdgeIteratorState> edges = new ArrayList<>();
         for (SequenceState<GPXExtension, GPXEntry, Path> state : seq) {
             if (state.transitionDescriptor != null) {
                 edges.addAll(state.transitionDescriptor.calcEdges());
             }
         }
+
         Path mergedPath = new MapMatchedPath(queryGraph.getBaseGraph(), weighting, edges);
         matchResult.setMergedPath(mergedPath);
-        matchResult.setMatchMillis(time);
-        matchResult.setMatchLength(distance);
         matchResult.setGPXEntriesMillis(durationMillis(gpxList));
         matchResult.setGPXEntriesLength(gpxLength(gpxList));
         return matchResult;
